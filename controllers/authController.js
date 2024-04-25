@@ -36,7 +36,10 @@ exports.getDataFromSlack = async (req, res) => {
       }
     );
 
+    console.log("Token response: ", tokneResponse.data);
+
     if (tokneResponse.data.ok) {
+      console.log(tokneResponse.data);
       const accessToken = tokneResponse.data.authed_user.access_token;
       req.session.slack_access_token = accessToken;
       req.session.slack_user_id = tokneResponse.data.authed_user.id;
@@ -50,6 +53,8 @@ exports.getDataFromSlack = async (req, res) => {
         }
       );
 
+      console.log("Chennel response: ", channelsResponse.data);
+
       if (channelsResponse.data.ok) {
         const channels = channelsResponse.data.channels
           .map((channel) => channel.name)
@@ -58,7 +63,7 @@ exports.getDataFromSlack = async (req, res) => {
         res.send(`Authorization successful. ${channels}`);
       } else {
         console.log(channelsResponse.data.error);
-        res.status(500).send("Error in fetching channels!");
+        res.status(500).send("Error in fetching channelsss!");
       }
     } else {
       console.log(channelsResponse.data.error);
