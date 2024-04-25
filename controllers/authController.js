@@ -57,11 +57,11 @@ exports.getDataFromSlack = async (req, res) => {
 
         res.send(`Authorization successful. ${channels}`);
       } else {
-        console.log(error);
+        console.log(channelsResponse.data.error);
         res.status(500).send("Error in fetching channels!");
       }
     } else {
-      console.log(error);
+      console.log(channelsResponse.data.error);
       res.status(500).send("Error fetcing token!");
     }
   } catch (error) {
