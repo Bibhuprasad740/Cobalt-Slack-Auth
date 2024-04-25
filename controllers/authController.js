@@ -6,7 +6,9 @@ exports.signin = async (req, res, next) => {
   res.redirect(
     `https://slack.com/oauth/v2/authorize?scope=${encodeURIComponent(
       scopes
-    )}&client_id=${process.env.SLACK_CLIENT_ID}`
+    )}&client_id=${
+      process.env.SLACK_CLIENT_ID
+    }&redirect_uri=${encodeURIComponent(process.env.SLACK_REDIRECT_URL)}`
   );
   //   res.redirect(
   //     `https://slack.com/oauth/v2/authorize?client_id=${
