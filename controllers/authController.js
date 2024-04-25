@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 exports.signin = async (req, res, next) => {
-  const scopes = "channels:general";
+  const scopes = "channels:read";
   console.log("request here...");
   res.redirect(
     `https://slack.com/oauth/v2/authorize?scope=${encodeURIComponent(
