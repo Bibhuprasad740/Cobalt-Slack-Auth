@@ -40,7 +40,7 @@ exports.getDataFromSlack = async (req, res) => {
 
     if (tokneResponse.data.ok) {
       console.log(tokneResponse.data);
-      const accessToken = tokneResponse.data.authed_user.access_token;
+      const accessToken = tokneResponse.data.access_token;
       req.session.slack_access_token = accessToken;
       req.session.slack_user_id = tokneResponse.data.authed_user.id;
 
